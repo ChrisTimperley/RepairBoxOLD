@@ -22,8 +22,8 @@ sudo dnf install -y ElectricFence.x86_64
 sudo dnf install -y ElectricFence.i686
 
 # Git LFS
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
-sudo dnf install git-lfs-1.2.0-1.e17.x86_64
+#curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
+#sudo dnf install git-lfs-1.2.0-1.e17.x86_64
 
 sudo dnf install -y SDL-devel.i686
 sudo dnf install -y SDL-devel.x86_64
