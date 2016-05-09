@@ -51,6 +51,8 @@ sudo dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686
 sudo dnf install -y sqlite.i686 sqlite-devel.i686
 sudo dnf install -y gdbm.i686 gdbm-devel.i686
 sudo dnf install -y openssl-devel.i686
+sudo dnf install -y tcl.i686 tcl-devel.i686
+sudo dnf install -y readline.i686 readline-devel.i686
 
 # Install ocaml and opam
 sudo dnf install -y ocaml
