@@ -9,4 +9,5 @@ if [ ! -d /home/vagrant/benchmarks ]; then
   wget https://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c/archive/master.zip -q -O /home/vagrant/benchmarks.zip
   unzip benchmarks.zip
   rm benchmarks.zip -f
+  mv AutomatedRepairBenchmarks.c-master benchmarks
 fi
