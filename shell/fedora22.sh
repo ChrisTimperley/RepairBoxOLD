@@ -21,6 +21,10 @@ sudo dnf install -y glibc-static
 sudo dnf install -y ElectricFence.x86_64
 sudo dnf install -y ElectricFence.i686
 
+# Git LFS
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
+sudo dnf install git-lfs-1.2.0-1.e17.x86_64
+
 sudo dnf install -y SDL-devel.i686
 sudo dnf install -y SDL-devel.x86_64
 sudo dnf install -y SDL_ttf.i686
@@ -41,6 +45,9 @@ sudo dnf install -y libxml-devel.x86_64
 # PHP fix: https://bugs.php.net/bug.php?id=43917
 sudo dnf install -y zlib-devel.i686
 sudo dnf install -y zlib-devel.x86_64
+
+# Python
+sudo dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686
 
 # Install ocaml and opam
 sudo dnf install -y ocaml
