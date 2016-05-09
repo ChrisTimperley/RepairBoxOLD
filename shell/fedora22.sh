@@ -48,7 +48,7 @@ sudo dnf install -y zlib-devel.x86_64
 
 # Python
 sudo dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686
-sudo dnf install -y sqlite.i686 sqlite-devel.i686 sqlite-static.i686
+sudo dnf install -y sqlite.i686 sqlite-devel.i686
 
 # Install ocaml and opam
 sudo dnf install -y ocaml
