@@ -67,6 +67,9 @@ sudo dnf install -y automake autoconf
 # fbc
 sudo dnf install -y libXpm.i686 libXpm-devel.i686
 
+# lighttpd
+sudo dnf install -y glib2-devel.i686
+
 # Install ocaml and opam
 sudo dnf install -y ocaml
 if ! [ -f /usr/local/bin/opam ] ; then
