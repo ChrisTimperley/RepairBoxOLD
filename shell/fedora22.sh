@@ -15,8 +15,8 @@ sudo dnf install -y ncurses-devel
 sudo dnf install -y pkgconfig
 sudo dnf install -y perl-devel
 sudo dnf install -y perl-CPAN
-sudo dnf install -y glibc-devel.i686
-sudo dnf install -y libstdc++-devel.i686
+sudo dnf install -y glibc-devel.i686 # TODO: Should this be i686?
+sudo dnf install -y libstdc++-devel.i686 # ??
 sudo dnf install -y glibc-static
 sudo dnf install -y ElectricFence.x86_64
 sudo dnf install -y ElectricFence.i686
@@ -68,7 +68,7 @@ sudo dnf install -y automake autoconf
 sudo dnf install -y libXpm.i686 libXpm-devel.i686
 
 # lighttpd
-sudo dnf install -y glib2-devel.i686
+sudo dnf install -y glib2-devel
 
 # Install ocaml and opam
 sudo dnf install -y ocaml
