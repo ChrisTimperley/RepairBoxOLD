@@ -59,6 +59,11 @@ sudo dnf install -y bzip2-devel.i686 bzip2-libs.i686
 sudo dnf install -y libffi.i686 libffi-devel.i686
 sudo dnf install -y libX11.i686 libX11-devel.i686
 
+sudo dnf install -y automake autoconf
+
+# libtiff
+#sudo dnf install -y gcc-c++.x86_64
+
 # Install ocaml and opam
 sudo dnf install -y ocaml
 if ! [ -f /usr/local/bin/opam ] ; then
