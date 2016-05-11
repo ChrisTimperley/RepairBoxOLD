@@ -62,6 +62,7 @@ sudo dnf install -y libX11.i686 libX11-devel.i686
 sudo dnf install -y automake autoconf
 
 # libtiff
+sudo dnf install -y libstdc++-devel.x86_64
 #sudo dnf install -y gcc-c++.x86_64
 
 # fbc
