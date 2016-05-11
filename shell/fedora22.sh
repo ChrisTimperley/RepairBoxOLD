@@ -11,6 +11,7 @@ sudo dnf upgrade -y vim-minimal
 sudo dnf install -y vim
 sudo dnf install -y git
 sudo dnf install -y m4
+sudo dnf install -y jq
 sudo dnf install -y ncurses-devel
 sudo dnf install -y pkgconfig
 sudo dnf install -y perl-devel
