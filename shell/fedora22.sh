@@ -6,6 +6,7 @@ sudo dnf install -y puppet
 
 # Since Puppet is refusing to work, let's just install things using a shell
 # script.
+sudo dnf install -y gcc
 sudo dnf install -y make
 sudo dnf upgrade -y vim-minimal
 sudo dnf install -y vim
@@ -21,6 +22,7 @@ sudo dnf install -y libstdc++-devel.i686 # ??
 sudo dnf install -y glibc-static
 sudo dnf install -y ElectricFence.x86_64
 sudo dnf install -y ElectricFence.i686
+sudo dnf install -y psmisc
 
 # Git LFS
 #curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
@@ -56,7 +58,7 @@ sudo dnf install -y tcl.i686 tcl-devel.i686
 sudo dnf install -y tix.i686 tix-devel.i686
 sudo dnf install -y tk.i686 tk-devel.i686
 sudo dnf install -y readline.i686 readline-devel.i686
-sudo dnf install -y bzip2-devel.i686 bzip2-libs.i686
+sudo dnf install -y bzip2-devel.i686 bzip2-libs.i686 bzip2-devel.x64_64
 sudo dnf install -y libffi.i686 libffi-devel.i686
 sudo dnf install -y libX11.i686 libX11-devel.i686
 
@@ -72,6 +74,7 @@ sudo dnf install -y libXpm.i686 libXpm-devel.i686
 # lighttpd
 sudo dnf install -y glib2-devel.x86_64 glib2-devel.i686
 sudo dnf install -y pcre-devel.i686
+sudo dnf install -y php
 
 # wireshark
 sudo dnf install -y gtk2-devel.i686 gtk2-devel.x86_64
