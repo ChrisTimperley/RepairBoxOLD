@@ -82,6 +82,19 @@ sudo dnf install -y libgcrypt-devel.i686
 sudo dnf install -y flex.x86_64
 sudo dnf install -y byacc.x86_64
 
+# openldap
+sudo dnf install -y libdb-devel.i686 libdb-devel.x86_64
+
+# wuftpd
+sudo dnf install -y ftp
+
+# imagemagick
+sudo dnf install -y fontconfig-devel.x86_64 fontconfig-devel.i686
+sudo dnf install -y freetype-devel.x86_64 freetype-devel.i686
+
+# lighttpd
+sudo dnf install -y perl-Test-Simple
+
 # Install ocaml and opam
 sudo dnf install -y ocaml
 if ! [ -f /usr/local/bin/opam ] ; then
@@ -95,6 +108,7 @@ opam install -y depext
 opam install -y ocamlfind
 opam install -y yojson
 opam install -y cil
+opam install -y core
 
 #sudo dnf install -y libgmp3-dev
 #sudo dnf install -y m4 libglib2.0-dev libgmp3-dev
