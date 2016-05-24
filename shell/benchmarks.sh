@@ -10,5 +10,5 @@ if [ ! -d /home/vagrant/benchmarks ]; then
   #unzip benchmarks.zip
   #rm benchmarks.zip -f
   #mv AutomatedRepairBenchmarks.c-master benchmarks
-  git clone https://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c benchmarks
+  git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c benchmarks --depth 1
 fi

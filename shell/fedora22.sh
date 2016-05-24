@@ -24,6 +24,7 @@ sudo dnf install -y ElectricFence.x86_64
 sudo dnf install -y ElectricFence.i686
 sudo dnf install -y psmisc
 sudo dnf install -y nc
+sudo dnf install -y gcc-c++
 
 # Git LFS
 #curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | sudo bash
