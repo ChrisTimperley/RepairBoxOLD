@@ -20,7 +20,7 @@ RUN dnf install -y gcc \
   perl-CPAN \
   glibc-devel \
   libstdc++-devel \
-  glibc-static \ # redundant?
+  glibc-static \
   ElectricFence.x86_64 \
   ElectricFence.i686 \
   psmisc \
