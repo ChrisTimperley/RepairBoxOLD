@@ -25,7 +25,9 @@ RUN dnf install -y gcc \
   ElectricFence.i686 \
   psmisc \
   nc \
-  gcc-c++
+  gcc-c++ \
+  automake \
+  autoconf
 
 # Install SDL packages
 RUN dnf install -y SDL-devel.i686 \
@@ -56,4 +58,28 @@ RUN dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686 \
   readline.i686 readline-devel.i686 \
   bzip2-devel.i686 bzip2-libs.i686 bzip2-devel.x64_64 \
   libffi.i686 libffi-devel.i686 \
-  libX11.i686 libX11-devel.i686 
+  libX11.i686 libX11-devel.i686
+
+# libtiff
+RUN dnf install -y libstdc++-devel.x86_64
+
+# FBC
+RUN dnf install -y libXpm.i686 libXpm-devel.i686
+
+# lighttpd
+RUN dnf install -y glib2-devel.x86_64 gtk2-devel.x86_64 \
+  pcre-devel.i686 \
+  php
+
+# openldap
+RUN dnf install -y libdb-devel.i686 libdb-devel.x86_64
+
+# wuftpd
+RUN dnf install -y ftp
+
+# imagemagick
+RUN dnf install -y fontconfig-devel.x86_64 fontconfig-devel.i686 \
+  freetype-devel.x86_64 freetype-devel.i686
+
+# Ocaml and Opam
+# Need to install these under the user's account
