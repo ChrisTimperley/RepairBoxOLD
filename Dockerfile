@@ -20,7 +20,7 @@ RUN dnf install -y gcc \
   perl-CPAN \
   glibc-devel \
   libstdc++-devel \
-  glibc-static \ # redundant?
+  glibc-static \
   ElectricFence.x86_64 \
   ElectricFence.i686 \
   psmisc \
@@ -48,7 +48,9 @@ RUN dnf install -y libxml2.i686 \
   libxml-devel.x86_64
 
 # Python requirements
-RUN dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686 \
+RUN dnf install -y ncurses-static.i686 \
+  ncurses-libs.i686 \
+  ncurses-devel.i686 \
   sqlite.i686 sqlite-devel.i686 \
   gdbm.i686 gdbm-devel.i686 \
   openssl-devel.i686 \
@@ -56,7 +58,7 @@ RUN dnf install -y ncurses-static.i686 ncurses-libs.i686 ncurses-devel.i686 \
   tix.i686 tix-devel.i686 \
   tk.i686 tk-devel.i686 \
   readline.i686 readline-devel.i686 \
-  bzip2-devel.i686 bzip2-libs.i686 bzip2-devel.x64_64 \
+  bzip2-devel.i686 bzip2-libs.i686 \
   libffi.i686 libffi-devel.i686 \
   libX11.i686 libX11-devel.i686
 
@@ -78,8 +80,10 @@ RUN dnf install -y libdb-devel.i686 libdb-devel.x86_64
 RUN dnf install -y ftp
 
 # imagemagick
-RUN dnf install -y fontconfig-devel.x86_64 fontconfig-devel.i686 \
-  freetype-devel.x86_64 freetype-devel.i686
+RUN dnf install -y fontconfig-devel.x86_64 \
+  fontconfig-devel.i686 \
+  freetype-devel.x86_64 \
+  freetype-devel.i686
 
 # Ocaml and Opam
 # Need to install these under the user's account
