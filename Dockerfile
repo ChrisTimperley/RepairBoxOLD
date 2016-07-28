@@ -4,7 +4,8 @@
 FROM fedora:latest
 MAINTAINER Chris Timperley "christimperley@gmail.com"
 
-# add user to sudo-ers list
+# Create user and add to sudoers list
+RUN useradd --password repair repair
 
 # Install basic package requirements
 RUN dnf install -y gcc \
@@ -85,5 +86,22 @@ RUN dnf install -y fontconfig-devel.x86_64 \
   freetype-devel.x86_64 \
   freetype-devel.i686
 
+# Switch to the repair user to install OCaml and OPAM
+USER repair
+WORKDIR /home/repair
+
 # Ocaml and Opam
 # Need to install these under the user's account
+#sudo dnf install -y ocaml
+#if ! [ -f /usr/local/bin/opam ] ; then
+#  sudo wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh \
+#    -O - | sh -s /usr/local/bin
+#  opam config setup -a
+#fi
+
+#opam update
+#opam install -y depext
+#opam install -y ocamlfind
+#opam install -y yojson
+#opam install -y cil
+#opam install -y core
