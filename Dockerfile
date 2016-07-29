@@ -6,12 +6,13 @@ MAINTAINER Chris Timperley "christimperley@gmail.com"
 
 # Create user and add to sudoers list
 RUN useradd --password repair repair
+RUN dnf install -y sudo
+RUN gpasswd wheel -a repair
+RUN echo 'repair  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Install basic package requirements
 RUN dnf install -y gcc \
   make \
-  vim-minimal \
-  vim \
   git \
   m4 \
   jq \
@@ -22,13 +23,14 @@ RUN dnf install -y gcc \
   glibc-devel \
   libstdc++-devel \
   glibc-static \
-  ElectricFence.x86_64 \
-  ElectricFence.i686 \
   psmisc \
   nc \
-  gcc-c++ \
-  automake \
-  autoconf
+  gcc-c++
+
+RUN dnf install -y vim-minimal vim
+RUN dnf install -y ElectricFence.x86_64 ElectricFence.i686
+RUN dnf install -y automake autoconf
+RUN dnf install -y wget patch tar unzip
 
 # Install SDL packages
 RUN dnf install -y SDL-devel.i686 \
@@ -90,18 +92,16 @@ RUN dnf install -y fontconfig-devel.x86_64 \
 USER repair
 WORKDIR /home/repair
 
-# Ocaml and Opam
-# Need to install these under the user's account
-#sudo dnf install -y ocaml
-#if ! [ -f /usr/local/bin/opam ] ; then
-#  sudo wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh \
-#    -O - | sh -s /usr/local/bin
-#  opam config setup -a
-#fi
+RUN sudo dnf install -y ocaml
+RUN if ! [ -f /usr/local/bin/opam ]; then \
+    sudo wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh \
+    -q -O - | sh -s /usr/local/bin && \
+    opam config setup -a; \
+  fi
 
-#opam update
-#opam install -y depext
-#opam install -y ocamlfind
-#opam install -y yojson
-#opam install -y cil
-#opam install -y core
+RUN opam update
+RUN opam install -y depext
+RUN opam install -y ocamlfind
+RUN opam install -y yojson
+RUN opam install -y cil
+RUN opam install -y core
