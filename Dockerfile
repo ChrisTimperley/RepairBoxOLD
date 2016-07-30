@@ -99,9 +99,14 @@ RUN if ! [ -f /usr/local/bin/opam ]; then \
     opam config setup -a; \
   fi
 
+# Install OPAM packages
 RUN opam update
 RUN opam install -y depext
 RUN opam install -y ocamlfind
 RUN opam install -y yojson
 RUN opam install -y cil
 RUN opam install -y core
+
+# Download and configure the ManyBugs and ICSE benchmarks
+RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
+  benchmarks --depth 1
