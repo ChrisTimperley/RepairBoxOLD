@@ -110,3 +110,7 @@ RUN opam install -y core
 # Download and configure the ManyBugs and ICSE benchmarks
 RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
   benchmarks --depth 1
+
+# Download and install GenProg 3
+RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
+  pushd genprog/src && make
