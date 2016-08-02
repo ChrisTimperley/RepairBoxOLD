@@ -2,13 +2,18 @@
 # Docker configuration for a stable, consistent automated repair environment
 #
 FROM fedora:latest
+#FROM ocaml/opam:fedora-24_ocaml-4.02.3
+USER root
 MAINTAINER Chris Timperley "christimperley@gmail.com"
+
 
 # Create user and add to sudoers list
 RUN useradd --password repair repair
 RUN dnf install -y sudo
 RUN gpasswd wheel -a repair
 RUN echo 'repair  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Perform rest of install
 
 # Install basic package requirements
 RUN dnf install -y gcc \
@@ -88,16 +93,24 @@ RUN dnf install -y fontconfig-devel.x86_64 \
   freetype-devel.x86_64 \
   freetype-devel.i686
 
-# Switch to the repair user to install OCaml and OPAM
+# Switch to the repair user to install OCaml and OPAM; doesn't seem to work as
+# I thought it would. Still need to execute commands using sudo -u.
 USER repair
 WORKDIR /home/repair
+ENV HOME /home/repair
+ENV OPAMYES 1
 
-RUN sudo dnf install -y ocaml
-RUN if ! [ -f /usr/local/bin/opam ]; then \
-    sudo wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh \
-    -q -O - | sh -s /usr/local/bin && \
-    opam config setup -a; \
-  fi
+RUN sudo -u repair sh -c "sudo dnf install -y ocaml"
+RUN sudo -u repair sh -c "wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -q -O - | sh -s /usr/local/bin"
+RUN opam init -a -y /home/repair/.opam
+
+# Update the environmental variables to those otherwise produced by calling:
+# eval $(opam config env)
+ENV CAML_LD_LIBRARY_PATH home/repair/.opam/4.02.1/lib/stublibs
+ENV MANPATH /home/repair/.opam/4.02.1/man:$MANPATH
+ENV PERL5LIB /home/repair/.opam/4.02.1/lib/perl5
+ENV OCAML_TOPLEVEL_PATH /home/repair/.opam/4.02.1/lib/toplevel
+ENV PATH /home/repair/.opam/4.02.1/bin:$PATH
 
 # Install OPAM packages
 RUN opam update
@@ -108,8 +121,8 @@ RUN opam install -y cil
 RUN opam install -y core
 
 # Download and configure the ManyBugs and ICSE benchmarks
-RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
-  benchmarks --depth 1
+#RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
+#  benchmarks --depth 1
 
 # Download and install GenProg 3
 RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
