@@ -13,8 +13,6 @@ RUN dnf install -y sudo
 RUN gpasswd wheel -a repair
 RUN echo 'repair  ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-# Perform rest of install
-
 # Install basic package requirements
 RUN dnf install -y gcc \
   make \
@@ -32,6 +30,8 @@ RUN dnf install -y gcc \
   nc \
   gcc-c++
 
+RUN dnf install -y glibc-devel.i686
+RUN dnf install -y cloc
 RUN dnf install -y vim-minimal vim
 RUN dnf install -y ElectricFence.x86_64 ElectricFence.i686
 RUN dnf install -y automake autoconf
