@@ -1,11 +1,11 @@
 #
-# Docker configuration for a stable, consistent automated repair environment
+# Docker configuration for a stable, consistent automated repair environment,
+# based on Fedora. Comes with the AutomatedRepairBenchmarks.c suite pre-loaded,
+# together with OCaml, OPAM, and GenProg.
 #
 FROM fedora:latest
-#FROM ocaml/opam:fedora-24_ocaml-4.02.3
 USER root
 MAINTAINER Chris Timperley "christimperley@gmail.com"
-
 
 # Create user and add to sudoers list
 RUN useradd --password repair repair
@@ -106,13 +106,15 @@ RUN opam init -a -y /home/repair/.opam
 
 # Update the environmental variables to those otherwise produced by calling:
 # eval $(opam config env)
+# This feels like a hideous hack, but without it, the environmental variables
+# within Docker are otherwise unaffected
 ENV CAML_LD_LIBRARY_PATH home/repair/.opam/4.02.1/lib/stublibs
 ENV MANPATH /home/repair/.opam/4.02.1/man:$MANPATH
 ENV PERL5LIB /home/repair/.opam/4.02.1/lib/perl5
 ENV OCAML_TOPLEVEL_PATH /home/repair/.opam/4.02.1/lib/toplevel
 ENV PATH /home/repair/.opam/4.02.1/bin:$PATH
 
-# Install OPAM packages
+# Install the prerequisite OPAM packages
 RUN opam update
 RUN opam install -y depext
 RUN opam install -y ocamlfind
@@ -122,10 +124,8 @@ RUN opam install -y core
 
 # Download and install GenProg 3
 RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
-  pushd genprog/src && make
+  pushd genprog/src && make && sudo make install
 
 # Download and configure the ManyBugs and ICSE benchmarks
 RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
   benchmarks --depth 1
-
-
