@@ -129,3 +129,7 @@ RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
 # Download and configure the ManyBugs and ICSE benchmarks
 RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
   benchmarks --depth 1
+
+# gzip
+RUN sudo dnf install -y cvs findutils gettext gettext-devel texinfo libtool hg
+RUN sudo dnf install -y perl --best --allowerasing
