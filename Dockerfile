@@ -38,6 +38,7 @@ RUN dnf install -y automake autoconf
 RUN dnf install -y wget patch tar unzip
 
 # Install SDL packages
+# Do we need the 64-bit packages?
 RUN dnf install -y SDL-devel.i686 \
   SDL-devel.x86_64 \
   SDL_ttf.i686 \
@@ -46,6 +47,7 @@ RUN dnf install -y SDL-devel.i686 \
   SDL_ttf-devel.x86_64
 
 # Install PHP requirements
+# Do we need the 64-bit packages?
 RUN dnf install -y libxml2.i686 \
   libxml2.x86_64 \
   libxml2-devel.i686 \
@@ -133,3 +135,6 @@ RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
 # gzip
 RUN sudo dnf install -y cvs findutils gettext gettext-devel texinfo libtool hg
 RUN sudo dnf install -y perl --best --allowerasing
+
+# Imagemagick
+RUN sudo dnf install -y file
