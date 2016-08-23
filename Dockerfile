@@ -138,3 +138,6 @@ RUN sudo dnf install -y perl --best --allowerasing
 
 # Imagemagick
 RUN sudo dnf install -y file
+
+# PHP
+RUN sudo dnf install -y bison flex
