@@ -141,3 +141,6 @@ RUN sudo dnf install -y file
 
 # PHP
 RUN sudo dnf install -y bison flex
+
+# ps
+RUN sudo dnf install procps-ng
