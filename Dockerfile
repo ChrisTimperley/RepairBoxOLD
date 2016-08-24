@@ -143,4 +143,4 @@ RUN sudo dnf install -y file
 RUN sudo dnf install -y bison flex
 
 # ps
-RUN sudo dnf install procps-ng
+RUN sudo dnf install -y procps-ng
