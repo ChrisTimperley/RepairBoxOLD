@@ -144,3 +144,10 @@ RUN sudo dnf install -y bison flex
 
 # ps
 RUN sudo dnf install -y procps-ng
+
+# Required by Python
+RUN sudo dnf install -y mesa-libGLU-devel.i686
+
+# Install CCache
+RUN sudo dnf install -y ccache
+ENV PATH /usr/lib/ccache:$PATH
