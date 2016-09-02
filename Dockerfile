@@ -151,3 +151,6 @@ RUN sudo dnf install -y mesa-libGLU-devel.i686
 # Install CCache
 RUN sudo dnf install -y ccache
 ENV PATH /usr/lib/ccache:$PATH
+
+# fbc
+RUN sudo dnf install -y gpm-devel.i686 binutils-devel.i686
