@@ -16,10 +16,8 @@ WORKDIR /home/repair
 ENV HOME /home/repair
 ENV OPAMYES 1
 
-#RUN sudo -u repair sh -c "sudo dnf install -y oca"
 RUN sudo -u repair sh -c "sudo apt-get install -y ocaml ocaml-native-compilers camlp4-extra opam"
 #RUN sudo -u repair sh -c "wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -q -O - | sh -s /usr/local/bin"
-RUN opam init -a -y /home/repair/.opam
 RUN opam init -a -y /home/repair/.opam
 
 # Update the environmental variables to those otherwise produced by calling:
