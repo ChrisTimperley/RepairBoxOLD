@@ -124,13 +124,9 @@ RUN opam install -y yojson
 RUN opam install -y cil
 RUN opam install -y core
 
-# Download and install GenProg 3
-RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
-  pushd genprog/src && make && sudo make install
-
 # Download and configure the ManyBugs and ICSE benchmarks
-RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
-  benchmarks --depth 1
+#RUN git clone git://github.com/ChrisTimperley/AutomatedRepairBenchmarks.c \
+#  benchmarks --depth 1
 
 # gzip
 RUN sudo dnf install -y cvs findutils gettext gettext-devel texinfo libtool hg
@@ -154,3 +150,9 @@ ENV PATH /usr/lib/ccache:$PATH
 
 # fbc
 RUN sudo dnf install -y gpm-devel.i686 binutils-devel.i686
+
+# Download and install GenProg 3, before ensuring it is in its most up-to-date
+# form
+RUN git clone https://bitbucket.org/ChrisTimperley/GP3 genprog --depth 1 && \
+  pushd genprog/src && make && sudo make install && popd && \
+  rm -rf /repair/genprog/src; exit 0
